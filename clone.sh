@@ -61,10 +61,10 @@ then
 fi
 
 sleep 2
-read -p "Would you like to do a shallow clone ? (Y/n)" DEPTH
+read -p "Would you like to do a shallow clone ? (Y/n): " DEPTH
 echo ""
 
-if [ "$DEPTH" -eq "Y" ]
+if [[ "$DEPTH" -eq "Y" ]]
 then
 	clone_depth1
 else
@@ -99,7 +99,7 @@ do
 			exit 1 ;;
 	esac
 done
-if [ "$K" -eq "ne" ]
+if [[ "$K" -eq "ne" ]]
 then
 	git clone --depth=1 https://github.com/StatiXOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-elf -b 12.0.0 prebuilts/gcc/linux-x86/aarch64/aarch64-elf
 	git clone --depth=1 https://github.com/StatiXOS/android_prebuilts_gcc_linux-x86_arm_arm-eabi -b 12.0.0 prebuilts/gcc/linux-x86/arm/arm-eabi
@@ -130,7 +130,7 @@ function cc () {
 }
 
 read -p "Would you like to clone custom clang (Y/n): " CLANG
-if [ "$CLANG" -eq "Y" ]
+if [[ "$CLANG" -eq "Y" ]]
 then
 	cc
 fi
