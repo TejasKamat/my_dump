@@ -32,7 +32,6 @@ do
 			echo "Not Defined :("
 		        exit 1 ;;
 esac
-
 (( i++ ))
 done
 echo ""
@@ -51,10 +50,10 @@ function clone () {
 	git clone https://gitlab.pixelexperience.org/android/vendor-blobs/vendor_xiaomi_mojito.git vendor/xiaomi/mojito
 }
 
-hx=$PWD/hardware/xiaomi
-if [ -f $hx ]
+HX=$PWD/hardware/xiaomi
+if [ -f $HX ]
 then
-         echo " $hx exists . . . removing..."
+         echo " $HX exists . . . removing..."
          echo ""
          sleep 2
          rm -rf $PWD/hardware/xiaomi
@@ -62,20 +61,20 @@ then
 fi
 
 sleep 2
-read -p "Would you like to do a shallow clone ? (Y/n)" depth
+read -p "Would you like to do a shallow clone ? (Y/n)" DEPTH
 echo ""
 
-if [ "$depth" -eq "Y" ]
+if [ "$DEPTH" -eq "Y" ]
 then
 	clone_depth1
 else
 	clone
 fi
 
-read -p "Enter kernel name (1=WestCoast, 2=legionX 3=NetErnels: " kernel
+read -p "Enter kernel name (1=WestCoast, 2=legionX 3=NetErnels: " KERNEL
 while [ "$i" -lt 2 ]
 do
-	case $kernel in 
+	case $KERNEL in
 		1 )
 			echo ""
 			echo "cloning WestCoast kernel . . ."
@@ -92,6 +91,7 @@ do
 			echo ""
 			echo "Cloning NetErnels kernel . . ."
 			echo ""
+			K=ne
 			sleep 1
 			git clone https://github.com/Neternels/android_kernel_xiaomi_mojito.git --depth=1 kernel/xiaomi/mojito ;;
 		* )
@@ -99,4 +99,38 @@ do
 			exit 1 ;;
 	esac
 done
+if [ "$K" -eq "ne" ]
+then
+	git clone --depth=1 https://github.com/StatiXOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-elf -b 12.0.0 prebuilts/gcc/linux-x86/aarch64/aarch64-elf
+	git clone --depth=1 https://github.com/StatiXOS/android_prebuilts_gcc_linux-x86_arm_arm-eabi -b 12.0.0 prebuilts/gcc/linux-x86/arm/arm-eabi
+	# https://github.com/Neternels/android_kernel_xiaomi_mojito//wiki
+fi
 
+function cc () {
+	read -p "Enter the clang name (1=Proton, 2=Neutron, 3=Azure, 4=Default): " CC
+	case $cc in
+		1 )
+			echo
+			echo "Cloning proton clang"
+			git clone https://github.com/kdrag0n/proton-clang --depth=1 prebuilts/clang/host/linux-x86/clang-proton ;;
+		2 )
+			echo
+			echo "cloning Neutron clang"
+			git clone https://gitlab.com/dakkshesh07/neutron-clang.git --depth=1 prebuilts/clang/host/linux-x86/clang-neutron ;;
+		3 )
+			echo
+			echo "Cloning Azure clang"
+			git clone https://gitlab.com/Panchajanya1999/azure-clang.git --depth=1 prebuilts/clang/host/linux-x86/clang-azure ;;
+		4 )
+			echo "" 
+			echo "Using default clang" ;;
+		* )
+			echo "Not defined :(" ;;
+	esac
+}
+
+read -p "Would you like to clone custom clang (Y/n): " CLANG
+if [ "$CLANG" -eq "Y" ]
+then
+	cc
+fi
