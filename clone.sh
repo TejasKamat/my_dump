@@ -7,11 +7,10 @@ i=1
 fn=$PWD/device/xiaomi/mojito
 while [ "$i" -lt 2 ]
 do
-	if [ -f $fn ]
+	if [ -e $fn ]
 	then
 		break
 	fi
-	
 	case $RM in
 		1 )
 			echo ""
@@ -58,6 +57,8 @@ then
          sleep 2
          rm -rf $PWD/hardware/xiaomi
          git clone https://github.com/TejasKamat/android_hardware_xiaomi.git -b arrow-12.0  hardware/xiaomi
+ else
+	 git clone https://github.com/DrTK001/android_hardware_xiaomi.git -b arrow-12.0  hardware/xiaomi
 fi
 
 sleep 2
@@ -70,7 +71,8 @@ then
 else
 	clone
 fi
-
+i=1
+echo ""
 read -p "Enter kernel name (1=WestCoast, 2=legionX 3=NetErnels: " KERNEL
 while [ "$i" -lt 2 ]
 do
@@ -79,27 +81,25 @@ do
 			echo ""
 			echo "cloning WestCoast kernel . . ."
 			echo ""
-			sleep 1
 			git clone https://github.com/xiaomi-sdm678/android_kernel_xiaomi_mojito.git --depth=1 kernel/xiaomi/sm6150 ;;
 		2 )
 			echo ""
 			echo "Cloning legionX kernel . . ."
 			echo ""
-			sleep 1
 			git clone https://github.com/venom-stark/kernel_xiaomi_mojito.git --depth=1 kernel/xiaomi/mojito ;;
 		3 )
 			echo ""
 			echo "Cloning NetErnels kernel . . ."
 			echo ""
-			K=ne
-			sleep 1
-			git clone https://github.com/Neternels/android_kernel_xiaomi_mojito.git --depth=1 kernel/xiaomi/mojito ;;
+			neternels=1
+			git clone https://github.com/Neternels/android_kernel_xiaomi_mojito.git --depth=1 kernel/xiaomi/sm6150 ;;
 		* )
 			echo "Invalid option :( "
 			exit 1 ;;
 	esac
+((i ++))
 done
-if [[ "$K" -eq "ne" ]]
+if [[ "$neternels" -eq "1" ]]
 then
 	git clone --depth=1 https://github.com/StatiXOS/android_prebuilts_gcc_linux-x86_aarch64_aarch64-elf -b 12.0.0 prebuilts/gcc/linux-x86/aarch64/aarch64-elf
 	git clone --depth=1 https://github.com/StatiXOS/android_prebuilts_gcc_linux-x86_arm_arm-eabi -b 12.0.0 prebuilts/gcc/linux-x86/arm/arm-eabi
@@ -122,7 +122,7 @@ function cc () {
 			echo "Cloning Azure clang"
 			git clone https://gitlab.com/Panchajanya1999/azure-clang.git --depth=1 prebuilts/clang/host/linux-x86/clang-azure ;;
 		4 )
-			echo "" 
+			echo ""
 			echo "Using default clang" ;;
 		* )
 			echo "Not defined :(" ;;
@@ -134,3 +134,4 @@ if [[ "$CLANG" -eq "Y" ]]
 then
 	cc
 fi
+exit 0
