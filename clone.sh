@@ -107,7 +107,7 @@ then
 fi
 
 function cc () {
-	read -p "Enter the clang name (1=Proton, 2=Neutron, 3=Azure, 4=Default): " CC
+	read -p "Enter the clang name (1=Proton, 2=Neutron, 3=Azure, 4=Default): " cc
 	case $cc in
 		1 )
 			echo
