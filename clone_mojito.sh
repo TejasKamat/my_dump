@@ -31,6 +31,7 @@ do
 			echo "Not Defined :("
 		        exit 1 ;;
 esac
+	echo ""
 	git clone https://github.com/TejasKamat/device_xiaomi_sm6150-common.git device/xiaomi/sm6150-common
 (( i++ ))
 done
@@ -47,7 +48,6 @@ function clone () {
         echo ""
 	git clone https://gitlab.pixelexperience.org/android/vendor-blobs/vendor_xiaomi_mojito.git vendor/xiaomi/mojito
 }
-echo ""
 HX=$PWD/hardware/xiaomi
 if [ -e $HX ]
 then
@@ -56,7 +56,7 @@ then
          rm -rf $PWD/hardware/xiaomi
          git clone https://github.com/TejasKamat/android_hardware_xiaomi.git -b arrow-12.0  hardware/xiaomi
  else
-	 git clone https://github.com/DrTK001/android_hardware_xiaomi.git -b arrow-12.0  hardware/xiaomi
+	 git clone https://github.com/TejasKamat/android_hardware_xiaomi.git -b arrow-12.0  hardware/xiaomi
 fi
 
 # shallow clone
@@ -81,7 +81,7 @@ do
 			echo ""
 			echo "cloning WestCoast kernel . . ."
 			echo ""
-			git clone https://github.com/xiaomi-sdm678/android_kernel_xiaomi_mojito.git --depth=1 kernel/xiaomi/sm6150 ;;
+			git clone https://github.com/xiaomi-sdm678/android_kernel_xiaomi_mojito.git --depth=1 kernel/xiaomi/mojito ;;
 		2 )
 			echo ""
 			echo "Cloning legionX kernel . . ."
@@ -92,7 +92,7 @@ do
 			echo "Cloning NetErnels kernel . . ."
 			echo ""
 			neternels=1
-			git clone https://github.com/Neternels/android_kernel_xiaomi_mojito.git --depth=1 kernel/xiaomi/sm6150 ;;
+			git clone https://github.com/Neternels/android_kernel_xiaomi_mojito.git --depth=1 kernel/xiaomi/mojito ;;
 		* )
 			echo "Invalid option :( "
 			exit 1 ;;
