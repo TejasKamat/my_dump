@@ -1,0 +1,11 @@
+datetime : 2022-08-07 22:48:23.069495
+ 	time of exercise in minutes : 120Minutes
+ 
+datetime : 2022-08-07 22:49:24.660430
+ 	time of exercise in minutes : 120Minutes
+ 
+datetime : 2022-08-07 23:24:57.273900
+ 	time of exercise in minutes : 69Minutes
+ 
+datetime : 2022-08-07 23:27:39.549594
+ 	time of exercise in minutes : 90Minutes

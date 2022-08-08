@@ -1,0 +1,4 @@
+
+ 
+datetime : 2022-08-07 23:26:43.806380
+ 	time of exercise in minutes : 6999999999Minutes
