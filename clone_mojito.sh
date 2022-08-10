@@ -14,11 +14,11 @@ function clone_vendor () {
         git clone https://github.com/TejasKamat/vendor_xiaomi_mojito vendor/xiaomi/mojito
         echo ""
 }
-function hx () {
+function hx_clone () {
         HX=$PWD/hardware/xiaomi
         if [ -e $HX ] ; then
                 read -p "$HX Exists. Do you want do remove and re-clone $HX Y/n " HX_OPTION
-                if [ "$HX_OPTION" -eq "Y"]
+                if [[ $HX_OPTION == Y ]]
                 then
                 rm -rf $HX
                 fi
@@ -76,7 +76,7 @@ then
 else
         clone_vendor
 fi
-hx
+hx_clone
 clone_clang
 clone_kernel
 exit 0
