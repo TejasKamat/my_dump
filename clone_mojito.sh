@@ -16,14 +16,17 @@ function clone_vendor () {
 }
 function hx_clone () {
         HX=$PWD/hardware/xiaomi
+        GHX="git clone https://github.com/ArrowOS-Devices/android_hardware_xiaomi.git $HX"
         if [ -e $HX ] ; then
                 read -p "$HX Exists. Do you want do remove and re-clone $HX Y/n " HX_OPTION
                 if [[ $HX_OPTION == Y ]]
                 then
                 rm -rf $HX
+                $GHX
                 fi
-        else
-                git clone https://github.com/ArrowOS-Devices/android_hardware_xiaomi.git $HX
+        
+         else
+                $GHX
                 echo ""
         fi
 }
