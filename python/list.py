@@ -1,7 +1,8 @@
-mylist=["kaddu", "harpic", "deodrant", "matchbox", "lighter", "gas",
-        "harpic", 100]
-kaddu="vegetable "
-numbers=[1, 2, 4, 1, 6, 3, 9, 3, 5, 6, 4, 7, 9, 3, 2, 1, 6, 7, 40, 4, 3]
+mylist = ["kaddu", "har pic", "deodorant", "matchbox", "lighter", "gas",
+          "har pic", 100]
+
+kaddu = "vegetable "
+numbers = [1, 2, 4, 1, 6, 3, 9, 3, 5, 6, 4, 7, 9, 3, 2, 1, 6, 7, 40, 4, 3]
 
 # numbers.sort() # orders numbers in ascending order
 # print(numbers)
@@ -33,5 +34,5 @@ b = 5
 # temp = a
 # a = b
 # b = temp
-a ,b = b ,a # this swaps the numbers
-print(a,b)
+a, b = b, a  # this swaps the numbers
+print(a, b)
