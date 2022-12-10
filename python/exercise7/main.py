@@ -3,9 +3,6 @@ from pygame import mixer
 import time
 
 mixer.init()
-# mixer.music.load("song.mp3")
-# mixer.music.play()
-
 
 def remind_water():
     inpw = input("Enter 'done' after drinking 1 glass of water (200ml): ")
@@ -48,5 +45,4 @@ while True:
             remind_physical()
     else:
         time.sleep(50)
-        continue
-
+        pass

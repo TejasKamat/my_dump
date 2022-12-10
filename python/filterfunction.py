@@ -1,6 +1,5 @@
 import subprocess
 from functools import reduce
-from askpass import AskPass
 
 l1 = list(range(1, 15 + 1))
 
@@ -30,11 +29,5 @@ name = ls
 # print(list_files.returncode)
 # print(subprocess.run('cd ..').returncode)
 
-with AskPass() as ask:
-    for x in ask:
-        if x == 'password':
-            break
-    else:
-        raise ValueError()
 
 print(subprocess.run(['sudo', 'pacman', '-S', name]).returncode)
