@@ -1,0 +1,10 @@
+package packs1;
+public class A
+{
+	public void arg(int r,int y,int z)
+	{
+	int arg=(x+y+z)/3:
+	system.out.println("Arg ="+arg);
+	
+	}
+}	

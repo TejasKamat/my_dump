@@ -1,0 +1,103 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Sir;
+
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.Vector;
+
+/**
+ *
+ * @author Acer
+ */
+public class Test extends Applet implements MouseListener
+{
+    int x1,y1;//,x2,y2;
+    Vector points=new Vector();
+    
+    public void init() {
+        System.out.println("this is initialisation function");
+        addMouseListener(this);
+    }
+
+     public void start() {
+        System.out.println("this is start function");
+    }
+      public void stop() {
+        System.out.println("this is stop function");
+    }
+   public void paint(Graphics g)
+   {
+       for(int i=0; i<points.size(); i++)
+       {
+            Point p=(Point) points.get(i);
+            g.drawOval((int)p.getX(),(int)p.getY(),50,50);  
+       }
+   }
+    public void destroy() {
+        System.out.println("this is destroy function");
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent me) 
+    {
+        try
+        {
+            Point p=me.getPoint();
+            points.add(p);
+             
+            x1=(int) p.getX();
+            y1=(int) p.getY();
+            
+            System.out.println("(x1,y1) = ("+x1+","+y1+")");
+           
+            
+            repaint();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+         System.out.println("Mouse Pressed....");
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent me) {
+        
+//        try
+//        {
+//            Point p=me.getPoint();
+//            x2=(int) p.getX();
+//            y2=(int) p.getY();
+//            
+//            System.out.println("(x2,y2) = ("+x2+","+y2+")");
+//            repaint();
+//        }
+//        catch(Exception e)
+//        {
+//            System.out.println(e.getMessage());
+//        }
+//         System.out.println("Mouse Released....");
+       }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        System.out.println("Mouse Entered....");
+         }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+         System.out.println("Mouse Exited....");
+         }
+
+ 
+}
