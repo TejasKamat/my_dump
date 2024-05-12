@@ -1,0 +1,16 @@
+DATA SEGMENT
+    P db 04h
+    Q db 02h
+DATA ENDS
+
+CODE SEGMENT
+ASSUME CS: CODE, DS: DATA
+START: MOV AX, DATA
+       MOV DS, AX
+       MOV AX, 0000h
+       MOV AL, 04h
+       MOV BL, 02h
+       MUL BL
+QUIT: INT 21h
+CODE ENDS
+END START
