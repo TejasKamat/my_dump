@@ -1,0 +1,18 @@
+* {
+    background-color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#sub {
+    text-align: center;
+}
+h1 {
+    padding: -2px;
+}
+form {
+    border: 4px green solid;
+    padding: 2%;
+    margin: 25%;
+    margin-top: -20px;
+    border-radius: 15px;
+    /* text-align: center; */
+}

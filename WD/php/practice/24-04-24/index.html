@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Form</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <H1 style="text-align: center">BATTLEPASS  F O R M </H1>
+    <form class="form" method="post" action="formphp.php">
+        <label title="name" id="name">Name : </label>
+        <input type="text" name="name" placeholder="Your name" id="name"> <br> <br>
+        Password :
+        <input type="password" name="pass" placeholder="Enter password">
+
+        <p>Select Locality . . . </p>
+        <select name="local">
+            <option value="none">none</option>
+            <option value="india">India</option>
+            <option value="china">China</option>
+            <option value="indo">Indonesia</option>
+            <option value="newyork">New York</option>
+            <option value="italy">Italy</option>
+        </select>
+        <p>Select Gender . . . </p>
+        <input type="radio" value="male" name="gender"> Male <br>
+        <input type="radio" value="female" name="gender"> Female <br>
+        <input type="radio" value="other" name="gender"> Other
+
+        <p>Tell us something about yourself . . .</p>
+        <textarea name="perinfo" id="info" cols="30" rows="3"></textarea> <br>
+        <input id="sub" type="submit" name="submit" value="submit">
+        <!-- Some practice codes -->
+        How are you fellin today : <br>
+        <input type="checkbox" name="good" value="good"> good <br>
+        <input type="checkbox" name="bad" value="bad"> bad <br>
+        <input type="checkbox" name="okay" value="ok"> okayish
+    </form>
+</body>
+</html>
